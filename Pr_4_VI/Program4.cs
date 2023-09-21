@@ -14,7 +14,6 @@ namespace Pr_4_VI
             int a = Math.Abs(int.Parse(Console.ReadLine()));
             Console.Write("b = ");
             int b = Math.Abs(int.Parse(Console.ReadLine()));
-            int mod = a;
             if (a == 0) Console.WriteLine(a);
             else if (b == 0) Console.WriteLine("Деление на 0 невозможно");
             else

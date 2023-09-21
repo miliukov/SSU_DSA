@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 // все двузначные числа, сумма цифр которых четная
 namespace Pr_3_IV
 {
+
     internal class Program3
     {
         static void Main(string[] args)
