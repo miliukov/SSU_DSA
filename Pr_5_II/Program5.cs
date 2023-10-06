@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 /* 
 вывести простые числа на [a, b]
 найти количество простых чисел на [a, b]
@@ -16,7 +12,7 @@ namespace Pr_5_II
         static bool IsPrime(int a)
         {
             if (a <= 1) return false;
-            for (int i = 2; i < (int) a / 2; i++)
+            for (int i = 2; i < (int)a / 2; i++)
             {
                 if (a % i == 0) return false;
             }
@@ -44,7 +40,7 @@ namespace Pr_5_II
             Console.WriteLine("Сумма составных чисел = {0}", sum);
             Console.Write("A = ");
             int A = int.Parse(Console.ReadLine());
-            for (int i = 0;;i++)
+            for (int i = 1; ; i++)
             {
                 if (IsPrime(A + i))
                 {

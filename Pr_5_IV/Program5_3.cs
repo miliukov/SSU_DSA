@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 // разработать рекурсивный метод для вывода на экран картинки
 namespace Pr_5_IV
 {
@@ -14,7 +10,7 @@ namespace Pr_5_IV
             {
                 Console.Write(a);
             }
-        }        
+        }
         static void Letters(int i, int n)
         {
             if (n > 0 && n >= 28)

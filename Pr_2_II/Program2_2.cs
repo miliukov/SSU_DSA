@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 // какая из цифр трехзначного числа больше: вторая или последняя
 namespace Pr_2_II
 {

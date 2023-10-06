@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-// перевод числа из p-ичной системы счисления в десятичную, (p>1, p≠10) рекурсия
+// перевод числа из p-ичной системы счисления в десятичную, (p>1, p≠10), рекурсия
 namespace Pr_5_III
 {
     internal class Program5_2
@@ -16,9 +12,7 @@ namespace Pr_5_III
                 return 0;
             }
             // Рекурсивный вызов для следующего разряда
-            int digitValue = CharToDigit(number[index]);
-            int power = (int)Math.Pow(p, number.Length - index - 1);
-            return digitValue * power + ConvertToDec(number, p, index + 1);
+            return CharToDigit(number[index]) * (int)Math.Pow(p, number.Length - index - 1) + ConvertToDec(number, p, index + 1);
         }
 
         static int CharToDigit(char c) // перевод из char в int
@@ -35,8 +29,8 @@ namespace Pr_5_III
 
         static void Main(string[] args)
         {
-            Console.WriteLine(ConvertToDec("101010", 2));
-            Console.WriteLine(ConvertToDec("3E8", 16));
+            Console.WriteLine(ConvertToDec("101010", 3));
+            Console.WriteLine(ConvertToDec("3E8", 15));
         }
     }
 }
