@@ -34,12 +34,11 @@ namespace Pr_7_IV
 
             for (int i = 0; i < n; i++)
             {
-                int sum = 0;
+                resultArray[i] = 0;
                 for (int j = k1; j <= k2; j++)
                 {
-                    sum += array[i, j];
+                    resultArray[i] += array[i, j];
                 }
-                resultArray[i] = sum;
             }
 
             for (int i = 0; i < n; i++)

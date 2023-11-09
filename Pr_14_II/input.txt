@@ -1,0 +1,4 @@
+Toyota Camry, ABC123, Ivanov, 2015, 50000
+Honda Civic, XYZ789, Petrov, 2012, 80000
+Ford Focus, DEF456, Sidorov, 2010, 60000
+Chevrolet Cruze, GHI789, Smirnov, 2014, 70000

@@ -9,21 +9,27 @@ namespace Pr_9_II
     {
         static void Main()
         {
-            using (StreamReader fileIn = new StreamReader("D:\\.program\\C#\\SSU_DSA\\Pr_9_II\\MyFile.txt", Encoding.GetEncoding(1251)))
+            string inputFile = "D:\\.program\\C#\\SSU_DSA\\Pr_9_II\\MyFile.txt";
+            string outputFile = "D:\\.program\\C#\\SSU_DSA\\Pr_9_II\\MyNewFile.txt";
+
+            using (StreamReader fileIn = new StreamReader(inputFile, Encoding.GetEncoding(1251)))
             {
-                using (StreamWriter fileOut = new StreamWriter("D:\\.program\\C#\\SSU_DSA\\Pr_9_II\\MyNewFile.txt", false))
+                using (StreamWriter fileOut = new StreamWriter(outputFile, false))
                 {
-                    string line;
-                    while ((line = fileIn.ReadLine()) != null)
+                    char[] buffer = new char[2];
+                    int bytesRead;
+
+                    while ((bytesRead = fileIn.Read(buffer, 0, 2)) > 0)
                     {
-                        char[] characters = line.ToCharArray();
-                        for (int i = 0; i < characters.Length - 1; i += 2)
+                        if (bytesRead == 1)
                         {
-                            char temp = characters[i];
-                            characters[i] = characters[i + 1];
-                            characters[i + 1] = temp;
+                            fileOut.Write(buffer[0]);
                         }
-                        fileOut.WriteLine(new string(characters));
+                        else
+                        {
+                            fileOut.Write(buffer[1]);
+                            fileOut.Write(buffer[0]);
+                        }
                     }
                 }
             }

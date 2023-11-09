@@ -13,9 +13,14 @@ namespace Pr_5_IV
         }
         static void Letters(int i, int n)
         {
-            if (n > 0 && n >= 28)
+            if (i == 25) // проверка на Z
             {
-
+                Stroka(i, ' ');
+                Stroka(n, (char)((int)'A' + i));
+                Console.WriteLine();
+            }
+            else if (n > 0 && n >= 28)
+            {
                 Stroka(i, ' ');
                 Stroka(n, (char)((int)'A' + i));
                 Console.WriteLine();

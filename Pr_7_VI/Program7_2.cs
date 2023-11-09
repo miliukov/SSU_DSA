@@ -1,82 +1,91 @@
 ﻿using System;
-// удалить из массива k-тую строку и j-тый столбец, если их значения совпадают
-namespace Pr_7_VI
+using System.Collections.Generic;
+// удалить одинаковые столбцы и строки
+class Program
 {
-    class Program7_2
+    static void Main()
     {
-        static void Main()
-        {
-            // Исходный ступенчатый массив
-            int[][] array = new int[][]
-            {
+        int[][] array = new int[][] {
             new int[] { 1, 2, 3 },
-            new int[] { 2, 5, 8 },
-            new int[] { 7, 8, 9 }
-            };
+            new int[] { 2, 3, 4 },
+            new int[] { 3, 4, 5 }
+        };
 
-            int k = 1; // строка
-            int j = 1; // столбец
+        int rowCount = array.Length;
+        int colCount = array[0].Length;
 
-            bool allValuesMatch = true;
-            int j_ = -1;
-            for (int i = 0; i < array.Length; i++)
-            {
-                j_++;
-                if (array[i][k] != array[j][j_])
-                {
-                    allValuesMatch = false;
-                    break;
-                }
-            }
+        List<int> rowsToRemove = new List<int>();
+        List<int> colsToRemove = new List<int>();
 
-            if (allValuesMatch)
-            {
-                array = RemoveRow(array, k);
-                array = RemoveColumn(array, j);
-            }
-
-            Console.WriteLine("Результат:");
-            for (int i = 0; i < array.Length; i++)
-            {
-                for (int c = 0; c < array[i].Length; c++)
-                {
-                    Console.Write(array[i][c] + " ");
-                }
-                Console.WriteLine();
-            }
-        }
-
-        static int[][] RemoveRow(int[][] array, int rowIndex)
+        for (int i = 0; i < rowCount; i++)
         {
-            int[][] newArray = new int[array.Length - 1][];
-            for (int i = 0, j = 0; i < array.Length; i++)
+            for (int j = i + 1; j < rowCount; j++)
             {
-                if (i != rowIndex)
-                {
-                    newArray[j] = array[i];
-                    j++;
-                }
-            }
-            return newArray;
-        }
+                bool isRowEqual = true;
+                bool isColEqual = true;
 
-        static int[][] RemoveColumn(int[][] array, int columnIndex)
-        {
-            int[][] newArray = new int[array.Length][];
-            for (int i = 0; i < array.Length; i++)
-            {
-                newArray[i] = new int[array[i].Length - 1];
-                for (int j = 0, c = 0; j < array[i].Length; j++)
+                for (int k = 0; k < colCount; k++)
                 {
-                    if (j != columnIndex)
+                    if (array[i][k] != array[j][k])
                     {
-                        newArray[i][c] = array[i][j];
-                        c++;
+                        isRowEqual = false;
+                        break;
                     }
                 }
+
+                if (isRowEqual && !rowsToRemove.Contains(i) && !rowsToRemove.Contains(j))
+                {
+                    rowsToRemove.Add(j);
+                }
+
+                for (int k = 0; k < rowCount; k++)
+                {
+                    if (array[k][i] != array[k][j])
+                    {
+                        isColEqual = false;
+                        break;
+                    }
+                }
+
+                if (isColEqual && !colsToRemove.Contains(i) && !colsToRemove.Contains(j))
+                {
+                    colsToRemove.Add(j);
+                }
             }
-            return newArray;
+        }
+
+        int[][] newArray = new int[rowCount - rowsToRemove.Count][];
+        int newRow = 0;
+
+        for (int i = 0; i < rowCount; i++)
+        {
+            if (!rowsToRemove.Contains(i))
+            {
+                int[] newRowArray = new int[colCount - colsToRemove.Count];
+                int newCol = 0;
+
+                for (int j = 0; j < colCount; j++)
+                {
+                    if (!colsToRemove.Contains(j))
+                    {
+                        newRowArray[newCol] = array[i][j];
+                        newCol++;
+                    }
+                }
+
+                newArray[newRow] = newRowArray;
+                newRow++;
+            }
+        }
+
+        for (int i = 0; i < newArray.Length; i++)
+        {
+            for (int j = 0; j < newArray[i].Length; j++)
+            {
+                Console.Write(newArray[i][j] + " ");
+            }
+
+            Console.WriteLine();
         }
     }
 }
-
