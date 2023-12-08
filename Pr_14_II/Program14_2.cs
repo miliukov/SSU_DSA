@@ -12,7 +12,7 @@ struct Car : IComparable<Car>
     public int Mileage;
     public int CompareTo(Car other)
     {
-        return Mileage.CompareTo(other.Mileage);
+        return - Mileage.CompareTo(other.Mileage);
     }
 }
 class Program14_2

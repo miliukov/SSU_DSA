@@ -17,75 +17,23 @@ class Program
         List<int> rowsToRemove = new List<int>();
         List<int> colsToRemove = new List<int>();
 
-        for (int i = 0; i < rowCount; i++)
+        bool equal = false;
+        int k = 0;
+
+        
+    }
+
+    bool isEqual(int[][] array)
+    {
+        int k = 0;
+        for (int i = 0; i < array.Length; i++)
         {
-            for (int j = i + 1; j < rowCount; j++)
+            if (array[i][k] != array[k][i])
             {
-                bool isRowEqual = true;
-                bool isColEqual = true;
-
-                for (int k = 0; k < colCount; k++)
-                {
-                    if (array[i][k] != array[j][k])
-                    {
-                        isRowEqual = false;
-                        break;
-                    }
-                }
-
-                if (isRowEqual && !rowsToRemove.Contains(i) && !rowsToRemove.Contains(j))
-                {
-                    rowsToRemove.Add(j);
-                }
-
-                for (int k = 0; k < rowCount; k++)
-                {
-                    if (array[k][i] != array[k][j])
-                    {
-                        isColEqual = false;
-                        break;
-                    }
-                }
-
-                if (isColEqual && !colsToRemove.Contains(i) && !colsToRemove.Contains(j))
-                {
-                    colsToRemove.Add(j);
-                }
+                return false;
             }
+            k++;
         }
-
-        int[][] newArray = new int[rowCount - rowsToRemove.Count][];
-        int newRow = 0;
-
-        for (int i = 0; i < rowCount; i++)
-        {
-            if (!rowsToRemove.Contains(i))
-            {
-                int[] newRowArray = new int[colCount - colsToRemove.Count];
-                int newCol = 0;
-
-                for (int j = 0; j < colCount; j++)
-                {
-                    if (!colsToRemove.Contains(j))
-                    {
-                        newRowArray[newCol] = array[i][j];
-                        newCol++;
-                    }
-                }
-
-                newArray[newRow] = newRowArray;
-                newRow++;
-            }
-        }
-
-        for (int i = 0; i < newArray.Length; i++)
-        {
-            for (int j = 0; j < newArray[i].Length; j++)
-            {
-                Console.Write(newArray[i][j] + " ");
-            }
-
-            Console.WriteLine();
-        }
+        return true;
     }
 }
