@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 // инвентарная ведомость игрушек
 struct Toy
@@ -30,12 +29,12 @@ class Program
         }
 
         // Возрастные границы
-        int minAge = 3;
-        int maxAge = 6;
+        int minAge = 1;
+        int maxAge = 10;
 
         // Фильтрация игрушек по возрастным границам
         var filteredToys = from toy in toys
-                           where toy.MinAge <= minAge && toy.MaxAge >= maxAge
+                           where toy.MinAge >= minAge && toy.MaxAge <= maxAge
                            group toy by toy.Name into toyGroup
                            select new
                            {

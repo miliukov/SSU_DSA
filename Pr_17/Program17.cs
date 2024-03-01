@@ -3,36 +3,36 @@ using System.Text;
 
 namespace Pr_17
 {
-    class Program17
+    class Program
     {
         static void Main()
         {
-            StringManipulator sm = new StringManipulator("Привет, Мир!");
+            StringManipulator mainString = new StringManipulator("Привет, Мир!");
+            Console.WriteLine("Исходная строка: " + mainString.Line);
 
-            Console.WriteLine("Исходная строка: " + sm.Line);
-            Console.WriteLine("Количество пробелов: " + sm.CountSpaces());
+            Console.WriteLine("Количество пробелов: " + mainString.CountSpaces());
 
-            sm.ConvertToLowerCase();
-            Console.WriteLine("Строка в нижнем регистре: " + sm.Line);
+            Console.WriteLine("Строка в нижнем регистре: " + mainString.ConvertToLowerCase().Line);
 
-            sm.RemovePunctuation();
-            Console.WriteLine("Строка без знаков препинания: " + sm.Line);
+            Console.WriteLine("Строка без знаков препинания: " + mainString.RemovePunctuation().Line);
 
-            Console.WriteLine("Длина строки: " + sm.Length);
+            Console.WriteLine("Длина строки: " + mainString.Length);
 
-            sm.Line = "Лалалала лала лал";
-            Console.WriteLine("Новое значение строки: " + sm.Line);
+            Console.WriteLine("Строка в верхнем регистре: " + (+mainString).Line);
 
-            Console.WriteLine("Символ по индексу 2: " + sm[2]);
+            Console.WriteLine("Строка в нижнем регистре: " + (-mainString).Line);
 
-            StringManipulator sm2 = new StringManipulator("привет");
-            Console.WriteLine("Проверка на равенство: " + (sm & sm2));
+            Console.WriteLine("Пустая ли строка? " + (mainString ? "Нет" : "Да"));
 
-            StringBuilder sb = (StringBuilder)sm;
-            Console.WriteLine("Преобразование в StringBuilder: " + sb.ToString());
+            StringManipulator someString = new StringManipulator("привет, мир!");
+            Console.WriteLine("Строки равны? " + (mainString & someString));
 
-            StringManipulator sm3 = (StringManipulator)sb;
-            Console.WriteLine("Обратное преобразование в StringManipulator: " + sm3.Line);
+            StringBuilder sbString = (StringBuilder)mainString;
+            Console.WriteLine("Преобразование в StringBuilder: " + sbString.ToString());
+
+            StringManipulator smFromSBString = (StringManipulator)sbString;
+            Console.WriteLine("Преобразование обратно в StringManipulator: " + smFromSBString.Line);
         }
     }
+
 }
